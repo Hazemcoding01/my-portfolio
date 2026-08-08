@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import projectImg from '../assets/images/project1.jpeg';
 
 export default function ProjectsSection() {
   return (
@@ -8,7 +9,7 @@ export default function ProjectsSection() {
 
       <div className="projects-grid">
         <div className="project-card">
-          <img src="src/assets/images/project 1.jpeg" alt="MockMate Dashboard" className="project-img" />
+          <img src={projectImg} alt="MockMate Dashboard" className="project-img" />
           <div className="project-content">
             <h3 className="project-title">MockMate AI – Admin Panel</h3>
             <p className="project-desc">
