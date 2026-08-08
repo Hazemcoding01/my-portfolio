@@ -7,7 +7,7 @@ export default function HeroSection() {
         <div className="profile-wrapper">
           <img src={hazemImg} alt="Hazem Photo" className="profile-img" />
         </div>
-        <h1 className="hero-name"> مطور واجهات أمامية| Frontend Developer</h1>
+        <h1 className="hero-name"> مطور واجهات أمامية | Frontend Developer</h1>
         <div className="role-badge">Frontend Developer (React.js)</div>
         <p className="hero-bio">
           أبني واجهات ويب حديثة وسريعة بتصاميم عصرية وتجربة مستخدم متميزة، أدمج بين الحس الفني لكود التصميم والخبرة البرمجية.
