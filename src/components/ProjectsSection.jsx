@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import projectImg from '../assets/images/mockmate.jpeg';
+import projectImg from '../assets/images/project 1.jpeg';
 
 export default function ProjectsSection() {
   return (
