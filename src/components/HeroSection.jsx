@@ -1,9 +1,11 @@
+import hazemImg from '../assets/hazem1.jpeg';
+
 export default function HeroSection() {
   return (
     <section className="section">
       <div className="glass-card hero-card">
         <div className="profile-wrapper">
-          <img src="/src/assets/hazem1.jpeg" alt="Hazem Photo" className="profile-img" />
+          <img src={hazemImg} alt="Hazem Photo" className="profile-img" />
         </div>
         <h1 className="hero-name">مطور فرونت إند | Frontend Developer</h1>
         <div className="role-badge">Frontend Developer (React.js)</div>
