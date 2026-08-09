@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './MockMateDetails.css';
 
-// استيراد الصور بالمسار الصحيح من مجلد components للخارج ثم إلى assets/images
 import loginImg from '../assets/images/login.png';
 import registerImg from '../assets/images/register.png';
 import tracksImg from '../assets/images/tracks.png';

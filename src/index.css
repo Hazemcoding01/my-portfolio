@@ -1,6 +1,3 @@
-/* ==========================================
-       1. المتغيرات والأساسيات (CSS Variables)
-       ========================================== */
     :root {
       --bg-dark: #0b1120;
       --bg-deep: #0f172a;
@@ -42,9 +39,7 @@
       display: none;
     }
 
-    /* ==========================================
-       3. القائمة العلوية (Glass Navbar)
-       ========================================== */
+  
     .navbar {
       position: fixed;
       top: 20px;
@@ -96,9 +91,7 @@
       text-shadow: 0 0 18px rgba(16, 185, 129, 0.32);
     }
 
-    /* ==========================================
-       4. الترتيب العام للسكاشن
-       ========================================== */
+    
     .container {
       position: relative;
       z-index: 2;
@@ -115,7 +108,6 @@
       overflow: hidden;
     }
 
-    /* خلفية هندسية معقدة متعددة الطبقات لجميع السكاشن */
     .section::before {
       content: "";
       position: absolute;
@@ -185,9 +177,7 @@
       box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
     }
 
-    /* ==========================================
-       5. سكشن الـ Hero
-       ========================================== */
+    
     .hero-card {
       text-align: center;
       padding: 60px 30px;
@@ -297,7 +287,7 @@
       margin: 22px auto 0;
     }
 
-    /* البوكس الزجاجي الكبير الموحّد لقسم "عنّي" */
+    
     .about-card {
       background: var(--glass-bg);
       backdrop-filter: blur(12px);
@@ -383,9 +373,7 @@
       margin: 0;
     }
 
-    /* ==========================================
-       7. سكشن المهارات (Skills)
-       ========================================== */
+    
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -415,9 +403,7 @@
       margin-top: 8px;
     }
 
-    /* ==========================================
-       8. سكشن المشاريع (Projects)
-       ========================================== */
+  
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -595,11 +581,7 @@
       text-align: center;
     }
 
-/* ==========================================
-       9. سكشن التواصل (Contact)
-       ========================================== */
 
-    /* خلفية هندسية معقدة متعددة الطبقات لقسم التواصل */
     #contact {
       position: relative;
       overflow: hidden;
@@ -673,7 +655,6 @@
       direction: rtl;
     }
 
-/* لوحة الأيقونات الداكنة المعدنية - مجموعة متماسكة في المركز */
     .contact-socials {
       position: relative;
       display: grid;
@@ -696,7 +677,6 @@
         0 18px 40px rgba(2, 6, 23, 0.4);
     }
 
-    /* جزيئات غبار متوهجة دقيقة داخل اللوحة اليسرى */
     .contact-socials::before,
     .contact-socials::after {
       content: "";
@@ -770,7 +750,6 @@
       height: 100%;
     }
 
-/* أزرار مربعة داكنة معدنية بحواف ناعمة مصقولة - مكبّرة لملء اللوحة */
     .social-icon {
       width: 100px;
       height: 100px;
@@ -797,12 +776,10 @@
       display: block;
     }
 
-    /* لمعة معدنية على الشعار نفسه */
     .social-icon svg path {
       filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.35)) drop-shadow(0 -1px 1px rgba(0, 0, 0, 0.4));
     }
 
-    /* تأثير الضوء الخلفي teal */
     .social-card:hover .social-icon {
       transform: scale(1.08);
       border-color: rgba(45, 212, 191, 0.5);
@@ -873,7 +850,6 @@
       min-height: 140px;
     }
 
-    /* زر إرسال معدني deep-teal مع توهج نيون */
     .contact-form .btn-primary {
       width: 100%;
       color: #ffffff;
@@ -1275,7 +1251,7 @@
         padding: 12px 20px;
       }
       .nav-links {
-        display: none; /* يمكن إضافة قائمة موبايل مستقبلاً */
+        display: none; 
       }
       .hero-name {
         font-size: 1.8rem;

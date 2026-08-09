@@ -32,7 +32,6 @@ export function useTestimonials() {
   const addTestimonial = useCallback(
     async (testimonialData) => {
       try {
-        // استخراج الاسم والرسالة سواء كانت مفتاح message أو text
         const name = testimonialData?.name;
         const message = testimonialData?.message || testimonialData?.text;
 

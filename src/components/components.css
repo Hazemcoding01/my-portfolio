@@ -56,7 +56,6 @@
   margin: 0 auto 30px;
 }
 
-/* تنسيق مجموعة الأزرار لتكون جنباً إلى جنب وبنفس الحجم والعرض تماماً */
 .cta-group {
   display: flex !important;
   flex-direction: row !important;

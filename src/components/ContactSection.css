@@ -1,8 +1,4 @@
-/* ==========================================
-   تنسيق قسم تواصل معي (النصوص القديمة + الخلفية الباهتة الأنيقة)
-   ========================================== */
 
-/* 1. خلفية السكشن الرئيسية (اللون الباهت الهادئ المطابق للصورة) */
 .exact-contact-section,
 #contact,
 .contact-section {
@@ -13,7 +9,6 @@
   direction: rtl !important;
   text-align: center !important;
   
-  /* اللون الباهت الراقي المطابق للصورة تماماً */
   background-color: #070e1b !important;
   background-image: 
     radial-gradient(circle at 50% 30%, rgba(0, 242, 254, 0.05) 0%, transparent 70%) !important;
@@ -34,7 +29,6 @@
   line-height: 1.8 !important;
 }
 
-/* 2. الديف exact-outer-box بعرض 100% وبحواف دائرية وشادو خفيف ناعم */
 .exact-outer-box {
   width: 100% !important;
   max-width: 100% !important;
@@ -151,7 +145,6 @@
   box-sizing: border-box !important;
 }
 
-/* شبكة الأيقونات بحجم أكبر ومتقاربة جداً في المنتصف */
 .exact-social-grid {
   display: grid !important;
   grid-template-columns: repeat(2, 120px) !important;
@@ -161,7 +154,6 @@
   direction: ltr !important;
 }
 
-/* تصميم المربعات الأربعة بحجم أكبر وبارز 3D */
 .exact-tile,
 .social-card {
   width: 120px !important;
@@ -190,7 +182,6 @@
     inset 0 1px 2px rgba(255, 255, 255, 0.2) !important;
 }
 
-/* تكبير الأيقونات SVGs بداخله لتكون ضخمة وواضحة جداً */
 .exact-tile svg,
 .social-card svg {
   width: 72px !important;
