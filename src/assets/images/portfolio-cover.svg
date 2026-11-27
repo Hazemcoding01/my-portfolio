@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Portfolio cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a"/>
+      <stop offset="1" stop-color="#0b1120"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.75" cy="0.2" r="0.7">
+      <stop offset="0" stop-color="#10b981" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <rect width="640" height="360" fill="url(#glow)"/>
+  <g stroke="#10b981" stroke-opacity="0.12">
+    <path d="M0 60H640M0 120H640M0 180H640M0 240H640M0 300H640"/>
+    <path d="M80 0V360M160 0V360M240 0V360M320 0V360M400 0V360M480 0V360M560 0V360"/>
+  </g>
+  <g fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round">
+    <circle cx="320" cy="150" r="9" fill="#34d399" stroke="none"/>
+    <ellipse cx="320" cy="150" rx="70" ry="28"/>
+    <ellipse cx="320" cy="150" rx="70" ry="28" transform="rotate(60 320 150)"/>
+    <ellipse cx="320" cy="150" rx="70" ry="28" transform="rotate(120 320 150)"/>
+  </g>
+  <text x="320" y="268" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#ffffff">HAZEM<tspan fill="#10b981">.dev</tspan></text>
+  <text x="320" y="304" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#94a3b8">React · Vite · React Router · Supabase</text>
+</svg>

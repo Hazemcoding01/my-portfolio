@@ -1,18 +1,36 @@
 import { useState, useEffect, useCallback } from 'react';
 import { supabase, hashPassword, HASHED_PASSWORD } from '../supabaseClient';
 
+// لو السيرفر مش بيرد (مثلاً مشروع Supabase موقوف) لا نترك الواجهة معلّقة للأبد
+const REQUEST_TIMEOUT_MS = 12000;
+
+const NETWORK_ERROR_MESSAGE =
+  'تعذر الاتصال بالخادم الآن، تأكد من الإنترنت وحاول مرة أخرى بعد قليل. رسالتك ما زالت في النموذج ولم تُمسح.';
+const GENERIC_ERROR_MESSAGE = 'حدث خطأ أثناء حفظ رأيك، حاول مرة أخرى لاحقاً.';
+
+const isNetworkError = (err) =>
+  /abort|fetch|network|timeout|load failed/i.test(`${err?.name || ''} ${err?.message || ''}`);
+
+function createTimeout() {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  return { signal: controller.signal, clear: () => clearTimeout(timer) };
+}
+
 export function useTestimonials() {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   const fetchTestimonials = useCallback(async () => {
+    const timeout = createTimeout();
     try {
       setLoading(true);
       const { data, error } = await supabase
         .from('testimonials')
         .select('*')
-        .order('created_at', { ascending: false });
+        .order('created_at', { ascending: false })
+        .abortSignal(timeout.signal);
 
       if (error) throw error;
       setTestimonials(Array.isArray(data) ? data : []);
@@ -21,6 +39,7 @@ export function useTestimonials() {
       console.error('فشل تحميل الآراء من Supabase:', err);
       setError('تعذر تحميل الآراء');
     } finally {
+      timeout.clear();
       setLoading(false);
     }
   }, []);
@@ -29,32 +48,34 @@ export function useTestimonials() {
     fetchTestimonials();
   }, [fetchTestimonials]);
 
+  // تُرجع { ok: true } عند النجاح أو { ok: false, error: 'رسالة للمستخدم' } عند الفشل
   const addTestimonial = useCallback(
     async (testimonialData) => {
+      const name = testimonialData?.name?.trim();
+      const message = (testimonialData?.message || testimonialData?.text)?.trim();
+
+      if (!name || !message) {
+        return { ok: false, error: 'من فضلك اكتب الاسم والرأي قبل الإرسال.' };
+      }
+
+      const timeout = createTimeout();
       try {
-        const name = testimonialData?.name;
-        const message = testimonialData?.message || testimonialData?.text;
-
-        if (!name || !message) {
-          console.error('الاسم أو الرسالة غير مكتملة');
-          return false;
-        }
-
-        const { error } = await supabase.from('testimonials').insert([
-          {
-            name,
-            message,
-            created_at: new Date().toISOString()
-          }
-        ]);
+        const { error } = await supabase
+          .from('testimonials')
+          .insert([{ name, message, created_at: new Date().toISOString() }])
+          .abortSignal(timeout.signal);
 
         if (error) throw error;
-        await fetchTestimonials();
-        return true;
       } catch (err) {
         console.error('فشل إرسال الرأي إلى Supabase:', err);
-        return false;
+        return { ok: false, error: isNetworkError(err) ? NETWORK_ERROR_MESSAGE : GENERIC_ERROR_MESSAGE };
+      } finally {
+        timeout.clear();
       }
+
+      // الرأي اتحفظ بنجاح. تحديث القائمة فشله لا يعني فشل الإرسال.
+      await fetchTestimonials();
+      return { ok: true };
     },
     [fetchTestimonials]
   );

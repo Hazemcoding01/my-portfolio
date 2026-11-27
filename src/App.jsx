@@ -1,9 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar.jsx';
 import HeroSection from './components/HeroSection.jsx';
 import AboutSection from './components/AboutSection.jsx';
 import SkillsSection from './components/SkillsSection.jsx';
 import ProjectsSection from './components/ProjectsSection.jsx';
+import DesignSection from './components/DesignSection.jsx';
 import ContactSection from './components/ContactSection.jsx';
 import TestimonialsSection from './components/TestimonialsSection.jsx';
 import MockMateDetails from './components/MockMateDetails.jsx';
@@ -21,6 +22,7 @@ function Home() {
           <AboutSection />
           <SkillsSection />
           <ProjectsSection />
+          <DesignSection />
           <ContactSection onAddTestimonial={addTestimonial} />
           <TestimonialsSection
             testimonials={testimonials}
@@ -45,6 +47,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/project-details" element={<MockMateDetails />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );
