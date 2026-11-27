@@ -5,7 +5,7 @@ export default function HeroSection() {
     <section className="section">
       <div className="glass-card hero-card">
         <div className="profile-wrapper">
-          <img src={hazemImg} alt="Hazem Photo" className="profile-img" />
+          <img src={hazemImg} alt="صورة حازم محمود الشخصية" className="profile-img" />
         </div>
         <h1 className="hero-name"> مطور واجهات أمامية | Frontend Developer</h1>
         <div className="role-badge">Frontend Developer (React.js)</div>

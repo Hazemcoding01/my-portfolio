@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import projectImg from '../assets/images/project 1.jpeg';
+import { PROJECTS } from '../data/projects.js';
 
 export default function ProjectsSection() {
   return (
@@ -8,33 +8,56 @@ export default function ProjectsSection() {
       <p className="section-subtitle">نماذج من أعمالي وتطبيقات الويب التي قمت ببنائها</p>
 
       <div className="projects-grid">
-        <div className="project-card">
-          <img src={projectImg} alt="MockMate Dashboard" className="project-img" />
-          <div className="project-content">
-            <h3 className="project-title">MockMate AI – Admin Panel</h3>
-            <p className="project-desc">
-              لوحة تحكم إدارية خاصة بمشرفي النظام لإدارة الأسئلة، المسارات التدريبية، ومتابعة المقابلات المنجزة.
-            </p>
-            <div className="project-tags">
-              <span className="tag">REST APIs</span>
-              <span className="tag">CSS3</span>
-              <span className="tag">HTML5</span>
+        {PROJECTS.map((project) => {
+          const isSoon = project.status === 'soon';
+          return (
+            <div className={`project-card${isSoon ? ' is-soon' : ''}`} key={project.id}>
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt={project.imageAlt}
+                  className="project-img"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <div className="project-img-placeholder" aria-hidden="true">
+                  Coming soon
+                </div>
+              )}
+              <div className="project-content">
+                <h3 className="project-title">{project.title}</h3>
+                <p className="project-desc">{project.description}</p>
+                <div className="project-tags">
+                  {project.tags.map((tag) => (
+                    <span className="tag" key={tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                {!isSoon && (
+                  <div className="project-links">
+                    {project.details && (
+                      <Link to={project.details} className="card-btn primary">
+                        عرض التفاصيل والصور
+                      </Link>
+                    )}
+                    {project.live && (
+                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="card-btn">
+                        التجربة المباشرة
+                      </a>
+                    )}
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="card-btn">
+                        الكود على GitHub
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
-            <div className="project-links">
-              <Link to="/project-details" className="card-btn primary">
-                عرض التفاصيل والصور
-              </Link>
-              <a
-                href="https://github.com/Hazemcoding01/MockMate-DashBoard-vg.2"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card-btn"
-              >
-                الكود على GitHub
-              </a>
-            </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
     </section>
   );
